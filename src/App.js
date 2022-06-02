@@ -1,23 +1,31 @@
-import logo from './logo.svg';
+
+import { Route } from 'react-router';
+import { Routes } from 'react-router';
 import './App.css';
+import Home from  './Components/Pages/Home'
+
+import Navbar from './Components/Navbar/Navbar';
+import Show from './Components/Pages/Show'
+import User from './Components/Pages/User';
+import Login  from './Components/Pages/Login'
+import Registration from './Components/Pages/Registration';
+import { useSelector } from 'react-redux';
+
 
 function App() {
+const id= useSelector(state=>state.movie.Id)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar/>
+     <Routes>
+      <Route path="/" element={<Home/>}> </Route>
+      <Route path="/show" element={<Show />}> </Route>
+      <Route path="/user"  element={<User/>}> </Route>
+      <Route path="/login" element={<Login/>}> </Route>
+      <Route path="/reg" element={<Registration/>}> </Route>
+      </Routes>
+     
+     
     </div>
   );
 }
